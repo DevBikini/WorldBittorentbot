@@ -37,6 +37,12 @@ if (investor2.list[user.telegramid]) {
   var newht = ""
 }
 if (json.hash) {
+if (json.amount < json_admin.withdraw.depomin) {
+    Bot.sendMessage(
+      "Sorry your investment autometically rejected because you have invested less than minimim amount"
+    )
+    return
+  }
   //new deposit
   investor.list[json.hash] = {
     user: {
