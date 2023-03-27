@@ -9,7 +9,8 @@
   aliases: 
 CMD*/
 
-var json = { amount: 1, currency: "BTT", hash: "test" }
+var tx = Math.round((new Date()).getTime() / 1000);
+var json = { amount: 1, currency: "BTT", hash: tx }
 var investor = Bot.getProperty("investor", { list: {} })
 var investor2 = Bot.getProperty("my_investment", { list: {} })
 var data = Bot.getProperty("active_referral", { list: {} })
