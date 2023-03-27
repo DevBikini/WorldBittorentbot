@@ -9,6 +9,7 @@
   aliases: cancel, 🔙 back
 CMD*/
 
+CheckInvest()
 var admin_info = Bot.getProperty("admin", { list: {} })
 var json_admin = admin_info.list["admin"]
 var joined = User.getProperty("join")
@@ -112,4 +113,3 @@ ApiRequest({
   parse_mode: "html",
   disable_web_page_preview: true
 })
-
