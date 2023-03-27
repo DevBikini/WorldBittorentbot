@@ -9,15 +9,5 @@
   aliases: 
 CMD*/
 
-var info = Bot.getProperty("user", { list: {} })
-info.list[user.telegramid] = {
-  user: {
-    balance: 0,
-    profit: 0,
-    invested: 0,
-    affiliate: 0,
-    withdraw: 0,
-    refid: GetRefLinked(params)
-  }
-}
-Bot.setProperty("user", info, "json")
+var investor = Bot.getProperty("investor")
+Bot.inspect(investor)

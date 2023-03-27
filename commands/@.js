@@ -12,6 +12,12 @@ CMD*/
 var info = Bot.getProperty("user", { list: {} })
 var data = info.list[user.telegramid]
 var global = info.list["global"]
+function ValidMen(d) {
+  if (!d) {
+    return ValidName()
+  }
+  return d
+}
 //function variable
 function ReplaceTextToVariable(text) {
   if (!global || !data) {
@@ -23,7 +29,7 @@ function ReplaceTextToVariable(text) {
     first_name: user.first_name,
     username: ValidName(),
     telegramid: user.telegramid,
-    mention: MentionName(),
+    mention: ValidMen(MentionName()),
     reflink: reflink,
     balance: data.user.balance.toFixed(10),
     profit: data.user.profit.toFixed(10),
@@ -60,33 +66,6 @@ function CryptoAdGateWayBot(data) {
     body: data
   })
 }
-//function validname
-function ValidName() {
-  if (user.username) {
-    return "@" + user.username
-  }
-  if (user.first_name) {
-    return GetLinkNames(user.first_name)
-  }
-  return GetLinkNames(user.last_name)
-}
-//function mention name
-function MentionName() {
-  if (user.username) {
-    return GetLinkNames(user.username)
-  }
-  if (user.first_name) {
-    return
-    GetLinkNames(user.first_name)
-  }
-  if (user.last_name) {
-    return GetLinkNames(user.last_name)
-  }
-}
-//function get linl
-function GetLinkNames(names) {
-  return "<a href='tg://user?id=" + user.telegramid + "'>" + names + "</a>"
-}
 //function
 function canRun(time, invest) {
   if (invest) {
@@ -108,3 +87,4 @@ function canRun(time, invest) {
   //investment done
   return true
 }
+

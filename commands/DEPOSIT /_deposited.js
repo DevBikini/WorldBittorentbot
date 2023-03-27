@@ -23,7 +23,7 @@ var time = new Date()
 var date = Libs.DateTimeFormat.format(time, "dd/m/yyyy h:M:s T")
 var date2 = date + "M"
 var new_history =
-  "⏱<b>Date: </b><code>" +
+  "⏱ <b>Date: </b><code>" +
   date2 +
   "</code>\n💰 <b>Amount: </b><code>" +
   json.amount +
@@ -57,13 +57,9 @@ if (json.hash) {
   var gf = ci / 100
   var amnt = json.amount * gf
   var ui =
-    '<a href="tg://user?id=' +
-    user.telegramid +
-    '">' +
-    user.telegramid +
-    "</a>"
+    '<a href="tg://user?id=' + user.telegramid + '">' + user.telegramid + "</a>"
   //5
-  var new_active = "➕ " + amnt + " " + json.currency + " from: " + ui + "\n"
+  var new_active = "<b>➕ " + amnt + " " + json.currency + " from: " + ui + "</b>\n"
   //have ac
   if (data.list[referid.user.refid]) {
     var haveAc = data.list[referid.user.refid].active
@@ -85,7 +81,7 @@ if (json.hash) {
       balance: udot.list[referid.user.refid].user.balance + amnt,
       profit: udot.list[referid.user.refid].user.profit,
       invested: udot.list[referid.user.refid].user.invested,
-      affiliate: udot.list[referid.user.refid].user.affiliate + amnt,
+      affiliate: udot.list[referid.user.refid].user.affiliate+amnt,
       withdraw: udot.list[referid.user.refid].user.withdraw,
       refid: udot.list[referid.user.refid].user.refid
     },
@@ -138,18 +134,29 @@ function ReplaceTextToVariable2(text) {
   var Lang = {
     botname: bot.name,
     first_name: user.first_name,
-    username: ValidName(user),
+    username: ValidName(),
     telegramid: user.telegramid,
-    mention: MentionName(user),
+    mention: ValidMen(MentionName()),
     reflink: reflink,
     hash: json.hash,
     amount: json.amount,
     currency: json.currency,
-    time: date2
+    time: date2,
+    txid:
+      "<a href='https://tronscan.org/#/transaction/" +
+      json.hash +
+      "'>" +
+      json.hash +
+      "</a>"
   }
   var newText = text.replace(/%([a-z_]+)%/gi, function(fullmatch, key) {
     return Lang[key] ? Lang[key] : fullmatch
   })
   return newText
 }
-
+function ValidMen(d) {
+  if (!d) {
+    return ValidName()
+  }
+  return d
+}
