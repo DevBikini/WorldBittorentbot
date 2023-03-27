@@ -13,7 +13,7 @@ var uses = Bot.getProperty("user", { list: {} })
 var admin_info = Bot.getProperty("admin", { list: {} })
 var json_admin = admin_info.list["admin"]
 var data = uses.list[user.telegramid]
-var bal = data.balance
+var bal = data.user.balance
 var min = json_admin.withdraw.minimum
 var cur = json_admin.currency
 function isNumeric(n) {
@@ -23,7 +23,7 @@ function isNumeric(n) {
 if (!isNumeric(message)) {
   Bot.sendMessage("❌ Send a value over " + min + ", and under (or max) " + bal)
 } else {
-  if ((bal < 1 * message) | (message * 1 < min)) {
+  if ((bal < message) | (message < min)) {
     Bot.sendMessage(
       "❌ Send a value over " + min + ", and under (or max) " + bal
     )
@@ -31,9 +31,7 @@ if (!isNumeric(message)) {
   }
   if (bal >= min && message >= min && message <= bal) {
     //go
-    Bot.sendMessage(
-      "✏️ *Send now your " + cur + " Address*"
-    )
+    Bot.sendMessage("✏️ *Send now your " + cur + " Address*")
     Bot.run({ command: "/wdprivate200", options: { amount: message } })
   } else {
     Bot.sendMessage(

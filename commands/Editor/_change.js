@@ -25,12 +25,16 @@ if (params == "csk") {
   return
 }
 if (params == "ctd") {
-  Bot.sendMessage("Enter new text example ")
+  Bot.sendMessage("Enter new text [example](https://t.me/DevBikini/60)", {
+    disable_web_page_preview: true
+  })
   Bot.run({ command: "/edited", options: { name: "Edit deposittext3" } })
   return
 }
 if (params == "ctdc") {
-  Bot.sendMessage("Enter new text example ")
+  Bot.sendMessage("Enter new text [example](https://t.me/DevBikini/60)", {
+    disable_web_page_preview: true
+  })
   Bot.run({ command: "/edited", options: { name: "Edit deposittext4" } })
   return
 }
@@ -50,14 +54,31 @@ if (params == "md") {
   return
 }
 if (params == "ctw") {
-  Bot.sendMessage("Enter Withdraw Text")
+  Bot.sendMessage("Enter Withdraw Text [example](https://t.me/DevBikini/60)", {
+      disable_web_page_preview: true
+    })
   Bot.run({ command: "/edited", options: { name: "Edit withdrawTex" } })
   return
 }
 if (params == "ctwc") {
-  Bot.sendMessage("Enter Withdraw Text Channel")
+  Bot.sendMessage("Enter Withdraw Text Channel [example](https://t.me/DevBikini/60)", {
+      disable_web_page_preview: true
+    })
   Bot.run({ command: "/edited", options: { name: "Edit withdrawTexChannel" } })
   return
 }
+if (params == "ip") {
+  Bot.sendMessage("Enter investment Plan", {
+      disable_web_page_preview: true
+    })
+  Bot.run({ command: "/edited", options: { name: "Edit InvestPlan" } })
+  return
+}
+if (params == "im") {
+  Bot.sendMessage("Enter investment in hour's", {
+      disable_web_page_preview: true
+    })
+  Bot.run({ command: "/edited", options: { name: "Edit Invest" } })
+  return
+}
 Bot.sendMessage(params)
-

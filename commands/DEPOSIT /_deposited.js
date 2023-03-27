@@ -3,7 +3,7 @@
   help: 
   need_reply: 
   auto_retry_time: 
-  folder: 
+  folder: DEPOSIT 
   answer: 
   keyboard: 
   aliases: 
@@ -52,9 +52,15 @@ if (json.hash) {
     history: new_history + newht
   }
   Bot.setProperty("my_investment", investor2, "json")
-  var amnt = json.amount * json_admin.withdraw.maximum
+  var ci = json_admin.withdraw.maximum * 1
+  var gf = ci / 100
+  var amnt = json.amount * gf
   var ui =
-    '<a href="tg://user?id=' + user.telegramid + '">' + user.telegramid + "</a>"
+    '<a href="tg://user?id=' +
+    user.telegramid +
+    '">' +
+    user.telegramid +
+    "</a>"
   //5
   var new_active = "➕ " + amnt + " " + json.currency + " from: " + ui + "\n"
   //have ac
@@ -78,7 +84,7 @@ if (json.hash) {
       balance: udot.list[referid.user.refid].user.balance + amnt,
       profit: udot.list[referid.user.refid].user.profit,
       invested: udot.list[referid.user.refid].user.invested,
-      affiliate: udot.list[referid.user.refid].user.affiliate,
+      affiliate: udot.list[referid.user.refid].user.affiliate + amnt,
       withdraw: udot.list[referid.user.refid].user.withdraw,
       refid: udot.list[referid.user.refid].user.refid
     },

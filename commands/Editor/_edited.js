@@ -11,8 +11,11 @@ CMD*/
 
 var admin_info = Bot.getProperty("admin", { list: {} })
 var data = admin_info.list["admin"]
+//currency
 if (options.name == "Edit currency") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -44,8 +47,11 @@ if (options.name == "Edit currency") {
   Bot.setProperty("admin", admin_info, "json")
   Bot.sendMessage("*Currency Successful changed*.")
 }
+//join text
 if (options.name == "Edit Text") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -77,9 +83,11 @@ if (options.name == "Edit Text") {
   Bot.setProperty("admin", admin_info, "json")
   Bot.sendMessage("*Join Text Successful changed*.")
 }
-//new line
+//join channel
 if (options.name == "Edit Channel") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -113,6 +121,8 @@ if (options.name == "Edit Channel") {
 //new line
 if (options.name == "Edit Info") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -146,6 +156,8 @@ if (options.name == "Edit Info") {
 //new line
 if (options.name == "Edit Referrals") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -179,6 +191,8 @@ if (options.name == "Edit Referrals") {
 //new line
 if (options.name == "Edit Support") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -212,6 +226,8 @@ if (options.name == "Edit Support") {
 //new line
 if (options.name == "Edit SupportLink") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -245,6 +261,8 @@ if (options.name == "Edit SupportLink") {
 //new line
 if (options.name == "Edit Deposit text") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -279,6 +297,8 @@ if (options.name == "Edit Deposit text") {
 //new line
 if (options.name == "Edit Deposit text2") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -312,6 +332,8 @@ if (options.name == "Edit Deposit text2") {
 //new line
 if (options.name == "Edit apikey") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: message,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -345,6 +367,8 @@ if (options.name == "Edit apikey") {
 //new line
 if (options.name == "Edit secretkey") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: message,
     admin: user.telegramid,
@@ -378,6 +402,8 @@ if (options.name == "Edit secretkey") {
 //new line
 if (options.name == "Edit deposittext3") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -411,6 +437,8 @@ if (options.name == "Edit deposittext3") {
 //new line
 if (options.name == "Edit deposittext4") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -444,6 +472,8 @@ if (options.name == "Edit deposittext4") {
 //new line
 if (options.name == "Edit min.") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -477,6 +507,8 @@ if (options.name == "Edit min.") {
 //new line
 if (options.name == "Edit max.") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -510,6 +542,8 @@ if (options.name == "Edit max.") {
 //new line
 if (options.name == "Edit mindepo.") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -543,6 +577,8 @@ if (options.name == "Edit mindepo.") {
 //withdrawTexChannel
 if (options.name == "Edit withdrawTex") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -576,6 +612,8 @@ if (options.name == "Edit withdrawTex") {
 //new line
 if (options.name == "Edit withdrawTexChannel") {
   admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
     api_key: data.api_key,
     secret_key: data.secret_key,
     admin: user.telegramid,
@@ -606,6 +644,110 @@ if (options.name == "Edit withdrawTexChannel") {
   }
   Bot.sendMessage("*Withdraw Text Channel Successful changed*.")
 }
+//new line
+if (options.name == "Edit InvestPlan") {
+  admin_info.list["admin"] = {
+    plan: message,
+    invest: data.invest,
+    api_key: data.api_key,
+    secret_key: data.secret_key,
+    admin: user.telegramid,
+    currency: data.currency,
+    start: { text: data.start.text },
+    join: {
+      text: data.join.text,
+      channel: data.join.channel
+    },
+    info: {
+      text: data.info.text
+    },
+    referral: { text: data.referral.text },
+    support: { text: data.support.text, link: data.support.link },
+    deposit: {
+      text: data.deposit.text,
+      text2: data.deposit.text2,
+      text3: data.deposit.text3,
+      text4: data.deposit.text4
+    },
+    withdraw: {
+      minimum: data.withdraw.minimum,
+      maximum: data.withdraw.maximum,
+      depomin: data.withdraw.depomin,
+      text: data.withdraw.text,
+      text2: data.withdraw.text2
+    }
+  }
+  Bot.sendMessage("*Investment Plan Successful changed*.")
+}
+//new line
+if (options.name == "Edit Invest") {
+  admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: message,
+    api_key: data.api_key,
+    secret_key: data.secret_key,
+    admin: user.telegramid,
+    currency: data.currency,
+    start: { text: data.start.text },
+    join: {
+      text: data.join.text,
+      channel: data.join.channel
+    },
+    info: {
+      text: data.info.text
+    },
+    referral: { text: data.referral.text },
+    support: { text: data.support.text, link: data.support.link },
+    deposit: {
+      text: data.deposit.text,
+      text2: data.deposit.text2,
+      text3: data.deposit.text3,
+      text4: data.deposit.text4
+    },
+    withdraw: {
+      minimum: data.withdraw.minimum,
+      maximum: data.withdraw.maximum,
+      depomin: data.withdraw.depomin,
+      text: data.withdraw.text,
+      text2: data.withdraw.text2
+    }
+  }
+  Bot.sendMessage("*Investment Successful changed*.")
+}
+//startText
+if (options.name == "startText") {
+  admin_info.list["admin"] = {
+    plan: data.plan,
+    invest: data.invest,
+    api_key: data.api_key,
+    secret_key: data.secret_key,
+    admin: user.telegramid,
+    currency: data.currency,
+    start: { text: message },
+    join: {
+      text: data.join.text,
+      channel: data.join.channel
+    },
+    info: {
+      text: data.info.text
+    },
+    referral: { text: data.referral.text },
+    support: { text: data.support.text, link: data.support.link },
+    deposit: {
+      text: data.deposit.text,
+      text2: data.deposit.text2,
+      text3: data.deposit.text3,
+      text4: data.deposit.text4
+    },
+    withdraw: {
+      minimum: data.withdraw.minimum,
+      maximum: data.withdraw.maximum,
+      depomin: data.withdraw.depomin,
+      text: data.withdraw.text,
+      text2: data.withdraw.text2
+    }
+  }
+  Bot.sendMessage("*Start Text Successful changed*.")
+}
 Bot.setProperty("admin", admin_info, "json")
 Bot.runCommand("/start")
-

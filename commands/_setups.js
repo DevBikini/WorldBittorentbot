@@ -11,6 +11,8 @@ CMD*/
 
 var admin_info = Bot.getProperty("admin", { list: {} })
 admin_info.list["admin"] = {
+  plan: 1,
+  invest: 1,
   api_key: "",
   secret_key: "",
   admin: user.telegramid,
@@ -55,3 +57,4 @@ admin_info.list["admin"] = {
 }
 Bot.setProperty("admin", admin_info, "json")
 Bot.sendMessage("/admin set to default")
+
