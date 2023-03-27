@@ -17,7 +17,7 @@ if (!joined) {
   var saveGlobal = Bot.getProperty("user", { list: {} })
   var global = saveGlobal.list["global"]
   if (!global) {
-    var users = 1
+    var users = 0
     var day = 1
     var timeStart = Date.now()
     var depo = 0
@@ -38,7 +38,7 @@ if (!joined) {
   }
   saveGlobal.list["global"] = {
     days: dayTime,
-    users: users + 1,
+    users: users,
     deposits: depo,
     withdrawals: wd,
     runtime: newTime

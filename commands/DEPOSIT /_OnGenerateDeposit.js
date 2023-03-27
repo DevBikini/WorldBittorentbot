@@ -32,7 +32,7 @@ var time = new Date()
 var date = Libs.DateTimeFormat.format(time, "dd/m/yyyy h:M:s T")
 var date2 = date + "M"
 var new_history =
-  "⏱<b>Date: </b><code>" +
+  "⏱ <b>Date: </b><code>" +
   date2 +
   "</code>\n💰 <b>Amount: </b><code>" +
   json.amount +
@@ -90,7 +90,7 @@ if (json.hash) {
       balance: udot.list[referid.user.refid].user.balance + amnt,
       profit: udot.list[referid.user.refid].user.profit,
       invested: udot.list[referid.user.refid].user.invested,
-      affiliate: udot.list[referid.user.refid].user.affiliate,
+      affiliate: udot.list[referid.user.refid].user.affiliate+amnt,
       withdraw: udot.list[referid.user.refid].user.withdraw,
       refid: udot.list[referid.user.refid].user.refid
     },

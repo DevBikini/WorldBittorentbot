@@ -14,6 +14,8 @@ if (params) {
   Bot.run({ command: "/edited", options: { name: "Edit SupportLink" } })
   return
 }
-Bot.sendMessage("Enter new text example")
+Bot.sendMessage("Enter new text [example](https://t.me/DevBikini/60)", {
+      disable_web_page_preview: true
+    })
 Bot.run({ command: "/edited", options: { name: "Edit Support" } })
 

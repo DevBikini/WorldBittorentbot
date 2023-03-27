@@ -17,6 +17,37 @@ if (
   (status == "administrator") |
   (status == "creator")
 ) {
+  //global save
+  var saveGlobal = Bot.getProperty("user", { list: {} })
+  var global = saveGlobal.list["global"]
+  if (!global) {
+    var users = 1
+    var day = 1
+    var timeStart = Date.now()
+    var depo = 0
+    var wd = 0
+  } else {
+    var users = global.users
+    var day = global.days
+    var timeStart = global.runtime
+    var depo = global.deposits
+    var wd = global.withdrawals
+  }
+  if (canRun(timeStart)) {
+    var dayTime = day + 1
+    var newTime = Date.now()
+  } else {
+    var dayTime = day
+    var newTime = timeStart
+  }
+  saveGlobal.list["global"] = {
+    days: dayTime,
+    users: users + 1,
+    deposits: depo,
+    withdrawals: wd,
+    runtime: newTime
+  }
+  Bot.setProperty("user", saveGlobal, "json")
   if (json_admin.admin == user.telegramid) {
     ApiRequest({
       text: ReplaceTextToVariable(json_admin.start.text),
@@ -36,7 +67,7 @@ if (
   ApiRequest({
     text: ReplaceTextToVariable(json_admin.start.text),
     reply_markup: {
-     // resize_keyboard: true,
+      // resize_keyboard: true,
       keyboard: [
         [{ text: "INFO" }],
         [{ text: "DEPOSIT" }, { text: "WITHDRAW" }],
@@ -60,3 +91,4 @@ if (status == "left") {
   })
   return
 }
+

@@ -22,11 +22,15 @@ if (json_admin.admin == user.telegramid) {
       json_admin.secret_key +
       "`\n👉 *Minimum Withdraw*: `" +
       json_admin.withdraw.minimum +
+      " " +
+      json_admin.currency +
       "`\n👉 *Referral commission*: `" +
       json_admin.withdraw.maximum +
       "%`\n👉 *Minimum Deposit*: `" +
       json_admin.withdraw.depomin +
-      "`\n\n/transfer - transfer bot",
+      " " +
+      json_admin.currency +
+      "`\n👉 *Investment Plan*: `"+json_admin.plan+"%`\n👉 *Investment*: `"+json_admin.invest+" hour`\n\n/transfer - transfer bot",
     reply_markup: {
       inline_keyboard: [
         [{ text: "Change Currency", callback_data: "/change cc" }],
@@ -59,6 +63,16 @@ if (json_admin.admin == user.telegramid) {
           {
             text: "Min. Depo",
             callback_data: "/change md"
+          }
+        ],
+        [
+          {
+            text: "Investment Plan",
+            callback_data: "/change ip"
+          },
+          {
+            text: "Investment",
+            callback_data: "/change im"
           }
         ],
         [
