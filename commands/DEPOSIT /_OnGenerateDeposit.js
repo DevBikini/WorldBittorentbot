@@ -46,6 +46,12 @@ if (investor2.list[user.telegramid]) {
   var newht = ""
 }
 if (json.hash) {
+  if (json.amount < json_admin.withdraw.depomin) {
+    Bot.sendMessage(
+      "Sorry your investment autometically rejected because you have invested less than minimim amount"
+    )
+    return
+  }
   //new deposit
   investor.list[json.hash] = {
     user: {
@@ -68,7 +74,8 @@ if (json.hash) {
   var ui =
     '<a href="tg://user?id=' + user.telegramid + '">' + user.telegramid + "</a>"
   //5
-  var new_active = "<b>➕ " + amnt + " " + json.currency + " from: " + ui + "</b>\n"
+  var new_active =
+    "<b>➕ " + amnt + " " + json.currency + " from: " + ui + "</b>\n"
   //have ac
   if (data.list[referid.user.refid]) {
     var haveAc = data.list[referid.user.refid].active
@@ -90,7 +97,7 @@ if (json.hash) {
       balance: udot.list[referid.user.refid].user.balance + amnt,
       profit: udot.list[referid.user.refid].user.profit,
       invested: udot.list[referid.user.refid].user.invested,
-      affiliate: udot.list[referid.user.refid].user.affiliate+amnt,
+      affiliate: udot.list[referid.user.refid].user.affiliate + amnt,
       withdraw: udot.list[referid.user.refid].user.withdraw,
       refid: udot.list[referid.user.refid].user.refid
     },
@@ -169,3 +176,4 @@ function ValidMen(d) {
   }
   return d
 }
+
