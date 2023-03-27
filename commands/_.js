@@ -22,6 +22,7 @@ if (text) {
   if (joined || admin == user.telegramid) {
     //run command
     Bot.runCommand("/Execute_" + message)
+    CheckInvest()
     return
   }
 }

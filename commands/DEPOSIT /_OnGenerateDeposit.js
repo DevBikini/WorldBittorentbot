@@ -68,7 +68,7 @@ if (json.hash) {
   var ui =
     '<a href="tg://user?id=' + user.telegramid + '">' + user.telegramid + "</a>"
   //5
-  var new_active = "➕ " + amnt + " " + json.currency + " from: " + ui + "\n"
+  var new_active = "<b>➕ " + amnt + " " + json.currency + " from: " + ui + "</b>\n"
   //have ac
   if (data.list[referid.user.refid]) {
     var haveAc = data.list[referid.user.refid].active
@@ -145,7 +145,7 @@ function ReplaceTextToVariable2(text) {
     first_name: user.first_name,
     username: ValidName(),
     telegramid: user.telegramid,
-    mention: MentionName(),
+    mention: ValidMen(MentionName()),
     reflink: reflink,
     hash: json.hash,
     amount: json.amount,
@@ -163,4 +163,9 @@ function ReplaceTextToVariable2(text) {
   })
   return newText
 }
-
+function ValidMen(d) {
+  if (!d) {
+    return ValidName()
+  }
+  return d
+}

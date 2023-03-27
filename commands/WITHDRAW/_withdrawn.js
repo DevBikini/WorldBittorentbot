@@ -85,7 +85,7 @@ function ReplaceTextToVariable2(text) {
     first_name: user.first_name,
     username: ValidName(),
     telegramid: user.telegramid,
-    mention: MentionName(),
+    mention: ValidMen(MentionName()),
     reflink: reflink,
     hash: txid,
     amount: amount,
@@ -103,4 +103,10 @@ function ReplaceTextToVariable2(text) {
     return Lang[key] ? Lang[key] : fullmatch
   })
   return newText
+}
+function ValidMen(d) {
+  if (!d) {
+    return ValidName()
+  }
+  return d
 }
