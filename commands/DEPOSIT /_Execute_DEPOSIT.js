@@ -44,7 +44,7 @@ if (json_admin.admin == user.telegramid) {
     CryptoAdGateWayBot({
       api_key: json_admin.api_key,
       secret_key: json_admin.secret_key,
-      currency: "DGB",
+      currency: json_admin.currency,
       callback: callback,
       name: "deposit"
     })
