@@ -87,4 +87,24 @@ function MentionName() {
 function GetLinkNames(names) {
   return "<a href='tg://user?id=" + user.telegramid + "'>" + names + "</a>"
 }
+//function
+function canRun(time, invest) {
+  if (invest) {
+    var investTime = invest
+  } else {
+    var investTime = 24
+  }
+  var last_run_at = time
+  var minutes = (Date.now() - last_run_at) / 1000 / 60
+  var minutes_in_day = investTime * 60
+  var next = minutes_in_day - minutes
+  var wait_hours = Math.floor(next / 60)
 
+  next -= wait_hours * 60
+  if (minutes < minutes_in_day) {
+    //investment not done yet
+    return
+  }
+  //investment done
+  return true
+}

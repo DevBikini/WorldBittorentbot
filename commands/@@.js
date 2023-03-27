@@ -11,17 +11,16 @@ CMD*/
 
 //investment
 var info = Bot.getProperty("user", { list: {} })
-var data = info.list[user.telegramid]
-var investor = Bot.getProperty("investor", { list: {} })
+var investor = Bot.getProperty("investor")
 var admin_info = Bot.getProperty("admin", { list: {} })
 var json_admin = admin_info.list["admin"]
 if (investor) {
   for (var ind in investor.list) {
     var tgID = investor.list[ind].user.telegramid
+    var data = info.list[tgID]
     var hash = investor.list[ind].user.hash
     var invest_time = investor.list[ind].user.invest_time
     var invest_amount = investor.list[ind].user.invest_amount
-    var history = investor.list[ind].history
     var currency = investor.list[ind].currency
     if (canRun(invest_time, json_admin.invest)) {
       var ci = json_admin.plan * 1
@@ -32,7 +31,9 @@ if (investor) {
         amount +
         " " +
         currency +
-        "</b>\n📆 Next Update in: <code>23H 59M 60S</code>"
+        "</b>\n📆 Next Update in: <code>" +
+        GetTime(Date.now(), json_admin.invest).text +
+        "</code>"
       Api.sendMessage({ chat_id: tgID, text: text, parse_mode: "html" })
       investor.list[hash] = {
         user: {
@@ -41,19 +42,18 @@ if (investor) {
           invest_amount: invest_amount,
           hash: hash
         },
-        history: history,
         currency: currency
       }
       Bot.setProperty("investor", investor, "json")
       //user balance add
       info.list[tgID] = {
         user: {
-          balance: data.balance + amount,
-          profit: data.profit + amount,
-          invested: data.invested,
-          affiliate: data.affiliate,
-          withdraw: data.withdraw,
-          refid: data.refid
+          balance: data.user.balance + amount,
+          profit: data.user.profit + amount,
+          invested: data.user.invested,
+          affiliate: data.user.affiliate,
+          withdraw: data.user.withdraw,
+          refid: data.user.refid
         }
       }
       Bot.setProperty("user", info, "json")
@@ -64,7 +64,7 @@ if (investor) {
   //line have list
 }
 //function
-function canRun(time, invest) {
+function GetTime(time, invest) {
   if (invest) {
     var investTime = invest
   } else {
@@ -75,13 +75,13 @@ function canRun(time, invest) {
   var minutes_in_day = investTime * 60
   var next = minutes_in_day - minutes
   var wait_hours = Math.floor(next / 60)
-
   next -= wait_hours * 60
+  var wait_minutes = Math.floor(next)
+  var seconds = Math.floor((next - wait_minutes) * 60)
   if (minutes < minutes_in_day) {
-    //investment not done yet
-    return
+    return { text: wait_hours + "H " + wait_minutes + "M " + seconds + "S" }
   }
   //investment done
-  return true
+  return { text: "24H 59M 60S" }
 }
 
