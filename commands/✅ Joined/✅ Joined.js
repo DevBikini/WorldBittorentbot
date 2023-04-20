@@ -16,7 +16,8 @@ if (!joined) {
   Api.getChatMember({
     chat_id: json_admin.join.channel,
     user_id: user.telegramid,
-    on_result: "/CheckChannel"
+    on_result: "/CheckChannel",
+    on_error: "/Errors "+json_admin.join.channel
   })
   return
 }
@@ -27,7 +28,7 @@ if (json_admin.admin == user.telegramid) {
       //resize_keyboard: true,
       keyboard: [
         [{ text: "INFO" }],
-        [{ text: "DEPOSIT" }, { text: "WITHDRAW" }],
+        [{ text: "DEPOSIT" }, { text: "RE-INVEST" }, { text: "WITHDRAW" }],
         [{ text: "REFFERRALS" }, { text: "SUPPORT" }]
       ]
     },
@@ -43,7 +44,7 @@ ApiRequest({
     //resize_keyboard: true,
     keyboard: [
       [{ text: "INFO" }],
-      [{ text: "DEPOSIT" }, { text: "WITHDRAW" }],
+      [{ text: "DEPOSIT" }, { text: "RE-INVEST" }, { text: "WITHDRAW" }],
       [{ text: "REFFERRALS" }, { text: "SUPPORT" }]
     ]
   },

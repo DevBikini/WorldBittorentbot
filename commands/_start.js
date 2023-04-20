@@ -9,7 +9,6 @@
   aliases: cancel, 🔙 back
 CMD*/
 
-CheckInvest()
 var admin_info = Bot.getProperty("admin", { list: {} })
 var json_admin = admin_info.list["admin"]
 var joined = User.getProperty("join")
@@ -47,17 +46,39 @@ if (!joined) {
   Bot.setProperty("user", saveGlobal, "json")
   //info save
   var info = Bot.getProperty("user", { list: {} })
+  var hd = info.list[user.telegramid]
   info.list[user.telegramid] = {
     user: {
-      balance: 0,
-      profit: 0,
-      invested: 0,
-      affiliate: 0,
-      withdraw: 0,
-      refid: GetRefLinked(params)
-    }
+      balance: have(hd, "balance"),
+      profit: have(hd, "profit"),
+      invested: have(hd, "invested"),
+      affiliate: have(hd, "affiliate"),
+      withdraw: have(hd, "withdraw"),
+      refid: have(hd, "refid"),
+      telegramid: user.telegramid
+    },
+    history: have(hd, "history")
   }
   Bot.setProperty("user", info, "json")
+  //function
+  function have(data, name) {
+    if (!data) {
+      var reqd =
+        name == "balance" ||
+        name == "profit" ||
+        name == "invested" ||
+        name == "affiliate" ||
+        name == "withdraw"
+      if (reqd) {
+        return 0
+      }
+      if (name == "history") {
+        return ""
+      }
+      return GetRefLinked(params)
+    }
+    return data.user[name]
+  }
   //must join channel
   if (json_admin.admin == user.telegramid) {
     ApiRequest({
@@ -90,7 +111,7 @@ if (json_admin.admin == user.telegramid) {
       //resize_keyboard: true,
       keyboard: [
         [{ text: "INFO" }],
-        [{ text: "DEPOSIT" }, { text: "WITHDRAW" }],
+        [{ text: "DEPOSIT" }, { text: "RE-INVEST" }, { text: "WITHDRAW" }],
         [{ text: "REFFERRALS" }, { text: "SUPPORT" }]
       ]
     },
@@ -106,10 +127,11 @@ ApiRequest({
     //resize_keyboard: true,
     keyboard: [
       [{ text: "INFO" }],
-      [{ text: "DEPOSIT" }, { text: "WITHDRAW" }],
+      [{ text: "DEPOSIT" }, { text: "RE-INVEST" }, { text: "WITHDRAW" }],
       [{ text: "REFFERRALS" }, { text: "SUPPORT" }]
     ]
   },
   parse_mode: "html",
   disable_web_page_preview: true
 })
+

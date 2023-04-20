@@ -10,12 +10,26 @@
 CMD*/
 
 if (params) {
-  Bot.sendMessage("Enter new Support Link Must start `https://t.me/name`")
-  Bot.run({ command: "/edited", options: { name: "Edit SupportLink" } })
+  Api.editMessageText({
+    message_id: request.message.message_id,
+    text: "Enter new Support Link Must start `https://t.me/name`",
+    disable_web_page_preview: true,
+    parse_mode: "markdown"
+  })
+  Bot.run({
+    command: "/admin_edited",
+    options: { name: "supportlink", message_id: request.message.message_id }
+  })
   return
 }
-Bot.sendMessage("Enter new text [example](https://t.me/DevBikini/60)", {
-      disable_web_page_preview: true
-    })
-Bot.run({ command: "/edited", options: { name: "Edit Support" } })
+Api.editMessageText({
+  message_id: request.message.message_id,
+  text: "Enter new text [example](https://t.me/DevBikini/62)",
+  disable_web_page_preview: true,
+  parse_mode: "markdown"
+})
+Bot.run({
+  command: "/admin_edited",
+  options: { name: "support", message_id: request.message.message_id }
+})
 

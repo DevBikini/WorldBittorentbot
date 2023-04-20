@@ -10,14 +10,26 @@
 CMD*/
 
 if (!params) {
-  Bot.sendMessage("Enter new text [example](https://t.me/DevBikini/60)", {
+  Api.editMessageText({
+    message_id: request.message.message_id,
+    text: "Enter new text [example](https://t.me/DevBikini/62)",
+    parse_mode: "markdown",
     disable_web_page_preview: true
   })
-  Bot.run({ command: "/edited", options: { name: "Edit Deposit text" } })
+  Bot.run({
+    command: "/admin_edited",
+    options: { name: "deposittext", message_id: request.message.message_id }
+  })
   return
 }
-Bot.sendMessage("Enter new text [example](https://t.me/DevBikini/60)", {
-      disable_web_page_preview: true
-    })
-Bot.run({ command: "/edited", options: { name: "Edit Deposit text2" } })
+Api.editMessageText({
+  message_id: request.message.message_id,
+  text: "Enter new text [example](https://t.me/DevBikini/62)",
+  parse_mode: "markdown",
+  disable_web_page_preview: true
+})
+Bot.run({
+  command: "/admin_edited",
+  options: { name: "depositchannel", message_id: request.message.message_id }
+})
 

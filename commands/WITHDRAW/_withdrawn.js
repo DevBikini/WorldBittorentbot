@@ -1,5 +1,5 @@
 /*CMD
-  command: /onwithdraw
+  command: /withdrawn
   help: 
   need_reply: 
   auto_retry_time: 
@@ -9,10 +9,7 @@
   aliases: 
 CMD*/
 
-var json = JSON.parse(content)
-if (json.error) {
-  return Bot.sendMessage("ERROR: " + json.error.message)
-}
+/*var json = { amount: 1, currency: "BTT", hash: "test", to: "test hash" }
 var amount = json.amount
 var currency = json.currency
 var txid = json.hash
@@ -51,8 +48,7 @@ user_info.list[user.telegramid] = {
     invested: json_user.user.invested,
     affiliate: json_user.user.affiliate,
     withdraw: json_user.user.withdraw + amount,
-    refid: json_user.user.refid,
-    telegramid: json_user.user.telegramid
+    refid: json_user.user.refid
   },
   history: newHis + hist
 }
@@ -113,5 +109,4 @@ function ValidMen(d) {
     return ValidName()
   }
   return d
-}
-
+}*/

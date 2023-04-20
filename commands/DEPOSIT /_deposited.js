@@ -1,5 +1,5 @@
 /*CMD
-  command: /OnGenerateDeposit
+  command: /deposited
   help: 
   need_reply: 
   auto_retry_time: 
@@ -9,17 +9,8 @@
   aliases: 
 CMD*/
 
-var json = JSON.parse(content)
-if (json.error) {
-  return Bot.sendMessage("ERROR: " + json.error.message)
-}
-if (json.address) {
-  var deposit = Bot.getProperty("deposit", { list: {} })
-  deposit.list[user.telegramid] = { address: json.address }
-  Bot.setProperty("deposit", deposit, "json")
-  Bot.sendMessage("`" + json.address + "`")
-  return
-}
+/*var tx = Math.round(new Date().getTime() / 1000)
+var json = { amount: 10, currency: "BTT", hash: tx }
 var investor = Bot.getProperty("investor", { list: {} })
 var investor2 = Bot.getProperty("my_investment", { list: {} })
 var data = Bot.getProperty("active_referral", { list: {} })
@@ -100,8 +91,7 @@ if (json.hash) {
       invested: udot.list[referid.user.refid].user.invested,
       affiliate: udot.list[referid.user.refid].user.affiliate + amnt,
       withdraw: udot.list[referid.user.refid].user.withdraw,
-      refid: udot.list[referid.user.refid].user.refid,
-      telegramid: udot.list[referid.user.refid].user.telegramid
+      refid: udot.list[referid.user.refid].user.refid
     },
     history: udot.list[referid.user.refid].history
   }
@@ -114,10 +104,9 @@ if (json.hash) {
       invested: my_udot.list[user.telegramid].user.invested + json.amount,
       affiliate: my_udot.list[user.telegramid].user.affiliate,
       withdraw: my_udot.list[user.telegramid].user.withdraw,
-      refid: my_udot.list[user.telegramid].user.refid,
-      telegramid: my_udot.list[user.telegramid].user.telegramid
+      refid: my_udot.list[user.telegramid].user.refid
     },
-    history: my_udot.list[user.telegramid].history
+    history: my_udot.list[user.telegramid].user.history
   }
   Bot.setProperty("user", my_udot, "json")
   //global
@@ -178,4 +167,5 @@ function ValidMen(d) {
     return ValidName()
   }
   return d
-}
+}*/
+
