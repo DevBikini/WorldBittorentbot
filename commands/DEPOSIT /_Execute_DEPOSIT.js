@@ -35,6 +35,22 @@ if (json_admin.admin == user.telegramid) {
     parse_mode: "html",
     disable_web_page_preview: true
   })
+  GenDepo()
+  return
+}
+//user
+ApiRequest({
+  text: ReplaceTextToVariable(json_admin.deposit.text),
+  parse_mode: "html",
+  disable_web_page_preview: true
+})
+ApiRequest({
+  text: ReplaceTextToVariable(json_admin.deposit.text2),
+  parse_mode: "html",
+  disable_web_page_preview: true
+})
+GenDepo()
+function GenDepo() {
   if (!depo) {
     Bot.sendMessage("✋️*Hold on..... generating your deposit address...*")
     var callback = Libs.Webhooks.getUrlFor({
@@ -53,29 +69,4 @@ if (json_admin.admin == user.telegramid) {
   Bot.sendMessage("`" + depo.address + "`")
   return
 }
-ApiRequest({
-  text: ReplaceTextToVariable(json_admin.deposit.text),
-  parse_mode: "html",
-  disable_web_page_preview: true
-})
-ApiRequest({
-  text: ReplaceTextToVariable(json_admin.deposit.text2),
-  parse_mode: "html",
-  disable_web_page_preview: true
-})
-if (!depo) {
-  Bot.sendMessage("✋️*Hold on..... generating your deposit address...*")
-  var callback = Libs.Webhooks.getUrlFor({
-    command: "/OnGenerateDeposit",
-    user_id: user.id
-  })
-  CryptoAdGateWayBot({
-    api_key: json_admin.api_key,
-    secret_key: json_admin.secret_key,
-    currency: json_admin.currency,
-    callback: callback,
-    name: "deposit"
-  })
-  return
-}
-Bot.sendMessage("`" + depo.address + "`")
+

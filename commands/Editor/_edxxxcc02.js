@@ -15,8 +15,14 @@
   aliases: 
 CMD*/
 
-Bot.sendMessage("Enter new text [example](https://t.me/DevBikini/60)", {
-      disable_web_page_preview: true
-    })
-Bot.run({ command: "/edited", options: { name: "Edit Info" } })
+Api.editMessageText({
+  message_id: request.message.message_id,
+  text: "Enter new text [example](https://t.me/DevBikini/62)",
+  parse_mode: "markdown",
+  disable_web_page_preview: true
+})
+Bot.run({
+  command: "/admin_edited",
+  options: { name: "info", message_id: request.message.message_id }
+})
 

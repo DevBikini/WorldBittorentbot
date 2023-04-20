@@ -9,9 +9,6 @@
   aliases: 
 CMD*/
 
-var info = Bot.getProperty("user", { list: {} })
-var data = info.list[user.telegramid]
-var global = info.list["global"]
 function ValidMen(d) {
   if (!d) {
     return ValidName()
@@ -20,6 +17,9 @@ function ValidMen(d) {
 }
 //function variable
 function ReplaceTextToVariable(text) {
+var info = Bot.getProperty("user", { list: {} })
+var data = info.list[user.telegramid]
+var global = info.list["global"]
   if (!global || !data) {
     return text
   }
@@ -44,7 +44,12 @@ function ReplaceTextToVariable(text) {
   var newText = text.replace(/%([a-z_]+)%/gi, function(fullmatch, key) {
     return Lang[key] ? Lang[key] : fullmatch
   })
-  return newText
+  if (newText) {
+    var goText = newText
+  } else {
+    var goText = text
+  }
+  return goText
 }
 //function refid
 function GetRefLinked(refid) {
@@ -87,4 +92,22 @@ function canRun(time, invest) {
   //investment done
   return true
 }
-
+//function get button
+function GetButton(name) {
+var admin_info = Bot.getProperty("admin", { list: {} })
+  var admin = admin_info.list["admin"].admin == user.telegramid
+  if (name == "info") {
+    if (admin) {
+      return [
+        [{ text: "📥 My Investments", callback_data: "/My_Investments" }],
+        [{ text: "📤 My Withdrawals", callback_data: "/My_withdrawals" }],
+        [{ text: "📝 Edit Text", callback_data: "/edxxxcc02" }]
+      ]
+    }
+    return [
+      [{ text: "📥 My Investments", callback_data: "/My_Investments" }],
+      [{ text: "📤 My Withdrawals", callback_data: "/My_withdrawals" }]
+    ]
+  }
+  //
+}

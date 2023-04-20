@@ -16,6 +16,7 @@ var data = uses.list[user.telegramid]
 var bal = data.user.balance
 var min = json_admin.withdraw.minimum
 var cur = json_admin.currency
+var amount = message * 1
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n)
 }
@@ -23,16 +24,16 @@ function isNumeric(n) {
 if (!isNumeric(message)) {
   Bot.sendMessage("❌ Send a value over " + min + ", and under (or max) " + bal)
 } else {
-  if ((bal < message) | (message < min)) {
+  if ((bal < amount) | (amount < min)) {
     Bot.sendMessage(
       "❌ Send a value over " + min + ", and under (or max) " + bal
     )
     return
   }
-  if (bal >= min && message >= min && message <= bal) {
+  if (bal >= min && amount >= min && amount <= bal) {
     //go
     Bot.sendMessage("✏️ *Send now your " + cur + " Address*")
-    Bot.run({ command: "/wdprivate200", options: { amount: message } })
+    Bot.run({ command: "/wdprivate200", options: { amount: amount } })
   } else {
     Bot.sendMessage(
       "*❌ You have to own at least " +
