@@ -24,7 +24,7 @@ if (options.name == "new") {
   BBAdmin.installBot({
     email: message,
     bot_id: bot.id,
-    as_protected: true,
+    //as_protected: true,
     bot_properties: [{ name: "admin", value: newT, type: "json" }]
   })
   Bot.sendMessage("done sent new data")
@@ -49,7 +49,7 @@ if (admin) {
 }
 BBAdmin.installBot({
   email: message,
-  as_protected: true,
+ // as_protected: true,
   bot_id: bot.id,
   bot_properties: [
     { name: "admin", value: admin_info, type: "json" },
